@@ -35,4 +35,24 @@ seventh push to github
 }
 
 
+Extra git commands
+{
+  list all branches
+  {
+    git branch -a
+  }
 
+  push to existing branch
+  {
+    git push origin main
+  }
+
+  create new branch
+  {
+    git checkout -b newbranch
+  }
+
+  {
+    create pull request from other branch and then the senior will merge the pull request by checking it
+  }
+}
