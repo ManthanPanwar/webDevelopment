@@ -1,0 +1,38 @@
+first tell who you are
+{
+  git config --global user.name "ManthanPanwar"
+  git config --global user.email "manthandpr@gmail.com"
+}
+
+second create empty repository
+{
+  git init
+}
+
+third add files to staging in local git
+{
+  git add .
+}
+
+fourth commit changes in local git
+{
+  git commit -m "firstCommit"
+}
+
+fifth create master/main branch
+{
+  git branch -M main
+}
+
+sixth connect with github
+{
+  git remote add origin https://github.com/ManthanPanwar/webDevelopment.git 
+}
+
+seventh push to github
+{
+  git push -u origin main
+}
+
+
+

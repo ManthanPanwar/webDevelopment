@@ -1,0 +1,15 @@
+GIT is distributed version control system
+
+git is an independent software.
+github, bitbucket, gitlab are just UI providers
+
+Q. How to tell git who are you?
+{
+  go to terminal, then write
+  {
+    git config --global user.name "ManthanPanwar"
+    git config --global user.email "manthandpr@gmail.com"
+  }
+}
+
+=> repository is like a directory.
