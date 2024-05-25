@@ -1,0 +1,18 @@
+form {
+  background-color: pink;
+  padding: 25px;
+}
+
+#uname {
+  height: 25px;
+}
+
+label[for="uname"] {
+  font-style: italic;
+}
+
+.btn {
+  padding: 10px;
+  margin-top: 20px;
+  border: none;
+}

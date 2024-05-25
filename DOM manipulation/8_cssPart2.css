@@ -1,0 +1,60 @@
+/* 
+4 ways of selecting(Selectors)
+1st: tag name
+2nd: id
+3rd: class
+4th: attribute
+ */
+
+/* default value for font-weight is 400 */
+
+/* button {
+  width: 100px;
+  height: 50px;
+  font-size: 20px;
+  font-weight: 700;
+  font-family: Times New Roman;
+  font-style: italic;
+  text-align: left;
+  background-color: blue;
+  margin: 100px;
+  padding: 30px;
+  padding-bottom: 50px;
+  margin-left: 200px;
+  border-radius: 10px;
+  border: 5px solid red;
+} */
+
+form {
+  font-family: Arial;
+  background-color: gray;
+  padding: 20px;
+
+  border-radius: 20px;
+  width: 50%;
+}
+
+/* #unameLabel {
+  color: blue;
+  font-weight: bold;
+  font-size: 20px;
+} */
+
+/* selecting element using attribute */
+label[for="uname"] {
+  color: blue;
+  font-weight: bold;
+  font-size: 20px;
+}
+
+#uname {
+  font-style: italic;
+  margin-bottom: 20px;
+  height: 30px;
+}
+
+#submitBtn {
+  background-color: yellow;
+  width: 225px;
+  border: 2px solid yellow;
+}
