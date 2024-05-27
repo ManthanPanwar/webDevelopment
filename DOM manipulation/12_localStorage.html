@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Contact Form</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+      }
+      .form-container {
+        max-width: 400px;
+        margin: 0 auto;
+        padding: 20px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+      }
+      .form-container label {
+        display: block;
+        margin-bottom: 5px;
+        font-weight: bold;
+      }
+      .form-container input {
+        width: calc(100% - 22px);
+        padding: 10px;
+        margin: 10px 0 20px 0;
+        border: 1px solid #ccc;
+        border-radius: 3px;
+      }
+      .form-container button {
+        width: 100%;
+        padding: 10px;
+        border: 3px solid black;
+        border-radius: 3px;
+        background-color: #28a745;
+        color: white;
+        font-size: 16px;
+      }
+      .form-container button:hover {
+        background-color: #218838;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="form-container">
+      <form id="contact-form">
+        <label for="username">Username</label>
+        <input
+          type="text"
+          id="username"
+          name="username"
+          placeholder="Username"
+          required
+        />
+
+        <label for="email">Email</label>
+        <input
+          type="email"
+          id="email"
+          name="email"
+          placeholder="Email"
+          required
+        />
+
+        <label for="phone">Phone Number</label>
+        <input
+          type="tel"
+          id="phone"
+          name="phone"
+          placeholder="Phone Number"
+          required
+        />
+
+        <button type="submit" id="submit-btn">Submit</button>
+      </form>
+    </div>
+
+    <script>
+      const form = document.querySelector("#contact-form");
+
+      form.addEventListener("submit", (event) => {
+        event.preventDefault();
+        const username = document.querySelector("#username").value;
+        const email = document.querySelector("#email").value;
+        const phone = document.querySelector("#phone").value;
+
+        localStorage.setItem("userName", username);
+        localStorage.setItem("userEmail", email);
+        localStorage.setItem("userphone", phone);
+
+        // Clear input fields after submission
+        form.reset();
+      });
+    </script>
+  </body>
+</html>
