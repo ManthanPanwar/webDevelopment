@@ -1,0 +1,20 @@
+first
+{
+  grab the filter input element and listen for keyup event
+}
+
+second
+{
+  when keyup event happens i will check whether the character entered by the user is present inside individual list item or not.
+  {
+    in this we will use function toLowerCase() to convert both into lowercase and then compare.
+  }
+  {
+    indexOf() function will give the index of the character which you have passed and if not present then returns -1(style = display: none)
+  }
+}
+
+third
+{
+  if not -> do not display that fruit list item
+}
