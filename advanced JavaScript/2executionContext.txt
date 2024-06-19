@@ -1,0 +1,66 @@
+var n=2;
+function square(num) {
+  var ans = num*num;
+  return ans;
+}
+var square2 = square(n);
+var square4 = square(4);
+
+**************************************************************
+The execution context is created in two phases.
+
+Phase 1
+{
+  memory creation phase: JS will allocate memory to all the variables and functions.
+  {
+    n: undefined
+    square: stores whole function's code
+    square2: undefined
+    square4: undefined
+  }
+}
+
+Phase 2
+{
+  code execution phase: each line is executed one by one.
+  {
+    changes value of "n" -------> n: 2
+    then it skips the function coz there is nothing to execute.
+    now at line 6 we invoke a function(functions are heart of JS) and whenever a function is invoked a new execution context is created.
+    now a new execution context is created inside the global EC.
+    now for that new EC we have again two phases.
+    Phase 1
+    {
+      num: undefined
+      ans: undefined
+    }
+
+    Phase 2
+    {
+      changes value of "num" -------> num: 2
+      changes value of "ans" -------> ans: 4
+      now we encounter "return" keyword which tells the function that your work is done and return the control to the EC where the function was invoked(whatever it has to return, it will find it in its local memory and then return that value).
+      and as soon as it returns the value the whole EC is deleted.
+    }
+
+    changes value of "square2" -------> square2: 4
+    now similarly, same thing will happen(line29 to line44).
+    changes value of "square4" -------> square4: 16
+  }
+  and at last the global EC is deleted.
+}
+
+to manage(creation, deletion, control) this EC javascript uses callStack
+and at the bottom of the callStack we have GEC(global EC) and when new EC are created the javascript will push it into the callStack.
+and when the whole code is executed the callStack will get empty.
+
+"callStack maintains the order of execution of execution contexts."
+
+Other names of "callStack"
+{
+  1. Execution context stack
+  2. Program stack
+  3. Control stack
+  4. Runtime stack
+  5. Machine stack
+}
