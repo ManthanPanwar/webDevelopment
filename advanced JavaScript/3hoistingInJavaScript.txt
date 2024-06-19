@@ -1,0 +1,42 @@
+getName();
+console.log(x)
+ 
+var x = 7;
+
+function getName(){
+  console.log("Namaste JS");
+}
+
+output of above code
+{
+  Namaste JS
+  undefined
+}
+
+Hoisting
+{
+It is a concept which enables us to extract values of variables and functions even before
+initialising/assigning value without getting error and this is happening due to the 1st phase (memory creation
+phase) of the Execution Context.
+}
+
+why does it happen?
+{
+bcoz even before code execution, memory is created so in case of variable, it will be initialized as undefined 
+while in case of function the whole function code is placed in the memory.
+}
+
+Hoisting doesn't work for functions if they are defined differently.
+(and this happens becoz they no longer behaves like function instead they behave like a variable and you know in phase-1 the value of variables is undefined.)
+{
+  1. function is defined in the form of an arrow function.
+  {
+    const func = () =>{}  // Uncaught TypeError: func is not a function
+  }
+  
+  2. function is defined to a variable.
+  {
+    const func = function () {};  // Uncaught TypeError: func is not a function
+  }
+}
+
