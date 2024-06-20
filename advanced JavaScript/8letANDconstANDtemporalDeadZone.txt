@@ -80,7 +80,7 @@ Syntax error
 
 Types of ERROR
 {
-  1. Uncaught ReferenceError
+  1. Uncaught ReferenceError(pokes up when we try to access a variable which is either not defined or is in temporal dead zone.)
   {
     Uncaught ReferenceError: x is not defined at ...
 
@@ -88,7 +88,7 @@ Types of ERROR
     never defined/declared and is being tried to be accesed.
   }
 
-  2. Uncaught ReferenceError
+  2. Uncaught ReferenceError(pokes up when we try to access a variable which is either not defined or is in temporal dead zone.)
   {
     Uncaught ReferenceError: cannot access 'a' before initialization
 
@@ -96,21 +96,21 @@ Types of ERROR
     a value, it is its Temporal Dead Zone. Thus, this error occurs.
   }
 
-  3. Uncaught SyntaxError
+  3. Uncaught SyntaxError(pokes up when there is some mistake in syntax in our program)
   {
     Uncaught SyntaxError: Identifier 'a' has already been declared
 
     This Error signifies that we are redeclaring a variable that is 'let' declared. No execution will take place.
   }
 
-  4. Uncaught SyntaxError
+  4. Uncaught SyntaxError(pokes up when there is some mistake in syntax in our program)
   {
     Uncaught SyntaxError: Missing initializer in const declaration
 
     This Error signifies that we haven't initialized or assigned value to a const declaration.
   }
 
-  5. Uncaught TypeError
+  5. Uncaught TypeError(pokes up when an operation can not be performed.)
   {
     Uncaught TypeError: Assignment to constant variable
 
