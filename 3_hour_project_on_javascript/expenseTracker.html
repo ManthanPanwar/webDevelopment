@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style></style>
+  </head>
+  <body>
+    <div id="body">
+      <div id="msg"></div>
+      <form action="#">
+        <label for="amount">Choose ExpenseAmount: </label>
+        <input
+          type="number"
+          name="amount"
+          id="amount"
+          placeholder="enter amount..."
+        />
+        <br />
+        <br />
+        <label for="description">Choose Description: </label>
+        <input
+          type="text"
+          name="description"
+          id="description"
+          placeholder="enter description..."
+        />
+        <br /><br />
+        <label for="dropdown_id">Choose a category: </label>
+        <select name="dropdown_name" id="dropdown_id">
+          <option value="fuel">fuel</option>
+          <option value="movie">movie</option>
+          <option value="eating">eating</option>
+          <option value="electricity">electricity</option>
+        </select>
+        <br /><br />
+        <button type="submit" id="submitBtn">Add Expense</button>
+      </form>
+      <ul id="detailAdded"></ul>
+    </div>
+  </body>
+  <script src="expenseTracker.js"></script>
+</html>
