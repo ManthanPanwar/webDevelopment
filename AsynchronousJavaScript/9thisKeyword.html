@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>this keyword</title>
+  </head>
+  <body>
+    manthan panwar
+    <button onclick="alert(this.value)" value="submit button">click Me</button>
+  </body>
+  <script>
+    "use strict";
+    // this keyword has many cases and it behaves differently in all cases.
+
+    // inside global space
+    this.x = 10;
+    console.log(this.x);
+    console.log(this); // global object
+
+    // inside a function
+    function xyz() {
+      /*
+      this substitution -> According to this substitution, if the value of this keyword is null/undefined, it will be
+replaced by globalObject only in non-strict mode. This is the reason why this refers to global window object inside
+function in non-strict mode.
+*/
+      console.log(this);
+    }
+    xyz();
+
+    const student = {
+      name: "Alok",
+      printName: function () {
+        console.log(this.name);
+      },
+    };
+    student.printName(); // Alok
+    const student2 = {
+      name: "Kajal",
+    };
+    student2.printName(); // throw error
+    // ❓ how to re-use printName method from `student` object
+    student.printName.call(student2); // Kajal
+    // Above `call` method is taking the value of `this` keyword
+    // So, Inside `printName` method value of `this` is now `student2` object
+    // So, call, bind and apply is used to set the value of this keyword.
+  </script>
+</html>
