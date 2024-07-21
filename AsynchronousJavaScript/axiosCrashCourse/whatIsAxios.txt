@@ -1,0 +1,14 @@
+Axios is an HTTP library or HTTP client to make request to either your own backend third party API to fetch data and 
+it is similar to the fetch API which is built into the browser but Axios is more powerful and has better syntax and you
+can also use it with nodeJS.
+
+Axios returns a promise so you can either you .then() or async await.
+
+Axios is just a tool for you to communicate from your frontend to the backend.
+
+Common Axios Mistake
+[
+  1. choose wrong URL.
+  2. endpoint has expired
+  3. no need to stringify the payload
+]
