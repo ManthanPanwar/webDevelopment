@@ -41,3 +41,19 @@ body {
 .form-container button:hover {
   background-color: #218838;
 }
+
+.delete-btn {
+  margin-left: 20px;
+  background: red;
+}
+
+.edit-btn {
+  margin-left: 20px;
+  background: green;
+  padding-left: 8px;
+  padding-right: 8px;
+}
+
+li {
+  margin-bottom: 15px;
+}

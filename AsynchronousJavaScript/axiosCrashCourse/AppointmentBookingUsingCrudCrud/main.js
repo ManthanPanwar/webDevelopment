@@ -1,3 +1,5 @@
+const crudcrud = "https://crudcrud.com/api/298939be6aae4d7487299faef7337d8e";
+
 const form = document.querySelector("#contact-form");
 const ul = document.querySelector("#detailAdded");
 const username = document.querySelector("#username");
@@ -21,81 +23,70 @@ form.addEventListener("submit", (event) => {
       email: email.value,
       phone: phone.value,
     };
-
-    // save to crud crud
-    axios
-      .post(
-        "https://crudcrud.com/api/ecb37c84e7ed49cc99a94cfefc208897/appointmentData",
-        myObj
-      )
-      .then((res) => console.log(res))
-      .catch((err) => console.error(err));
-
-    const newLi = document.createElement("li");
-    const newLiText = document.createTextNode(
-      `${username.value} - ${email.value} - ${phone.value}`
-    );
-    newLi.appendChild(newLiText);
-    newLi.className = "detail";
-
-    // delete appointment
-    const deleteBtn = document.createElement("button");
-    deleteBtn.appendChild(document.createTextNode("Delete"));
-    deleteBtn.className = "delete-btn";
-    deleteBtn.id = email.value;
-    deleteBtn.style.marginLeft = "20px";
-    deleteBtn.style.background = "#ff4444";
-    newLi.appendChild(deleteBtn);
-
-    // edit appointment
-    const editBtn = document.createElement("button");
-    editBtn.appendChild(document.createTextNode("Edit"));
-    editBtn.className = "edit-btn";
-    editBtn.id = email.value;
-    editBtn.style.marginLeft = "20px";
-    editBtn.style.background = "green";
-    editBtn.style.paddingLeft = "8px";
-    editBtn.style.paddingRight = "8px";
-    newLi.appendChild(editBtn);
-    newLi.style.marginBottom = "15px";
-
-    ul.appendChild(newLi);
-
-    // Clear input fields after submission
-    form.reset();
-
-    // Add to Local Storage
-    addToLS(myObj);
+    addUserDetails(myObj).then((id) => showUser(myObj, id));
   }
+  form.reset();
 });
 
-function addToLS(myObj) {
-  localStorage.setItem(myObj.email, JSON.stringify(myObj));
+async function addUserDetails(obj) {
+  let id;
+  await axios
+    .post(`${crudcrud}/appointmentData`, obj)
+    .then((res) => {
+      id = res.data._id;
+    })
+    .catch((err) => console.log(err));
+  return Promise.resolve(id);
 }
 
-ul.addEventListener("click", (event) => {
-  if (event.target.classList.contains("delete-btn")) {
-    const toBeDeleted = event.target.id;
-    const appointmentToDelete = event.target.parentElement;
-    localStorage.removeItem(toBeDeleted);
-    ul.removeChild(appointmentToDelete);
-  }
-});
+function displayUser() {
+  axios
+    .get(`${crudcrud}/appointmentData`)
+    .then((res) => {
+      res.data.forEach((obj) => {
+        showUser(obj, obj._id);
+      });
+    })
+    .catch((err) => console.log(err));
+}
 
-ul.addEventListener("click", (event) => {
-  if (event.target.classList.contains("edit-btn")) {
-    const toBeEdited = event.target.id;
-    const toBeEditedmyObj = JSON.parse(localStorage.getItem(toBeEdited));
-    localStorage.removeItem(toBeEdited);
-    username.value = toBeEditedmyObj.username;
-    email.value = toBeEditedmyObj.email;
-    phone.value = toBeEditedmyObj.phone;
-    ul.removeChild(event.target.parentElement);
-    console.log(event.target.parentElement);
-  }
-});
-// let myObjSerialized = JSON.stringify(myObj);
-// localStorage.setItem(username.value, myObjSerialized);
+window.addEventListener("DOMContentLoaded", displayUser);
 
-// let myObjDeserialized = JSON.parse(localStorage.getItem("user1"));
-// console.log(myObjDeserialized);
+function showUser(obj, id) {
+  // check(obj.email);
+  const newLi = document.createElement("li");
+  newLi.innerHTML = `${obj.username} - ${obj.email} - ${obj.phone} 
+  <button class="delete-btn" onclick=deleteUser('${id}')>Delete</button> 
+  <button class="edit-btn" onclick=editUser('${id}')>Edit</button>`;
+  ul.appendChild(newLi);
+}
+
+// function check(email) {
+//   const ul = document.getElementById("users");
+//   for (let i = 0; i < ul.children.length; i++) {
+//     if (ul.children[i].textContent.indexOf(email) != -1)
+//       ul.removeChild(ul.children[i]);
+//   }
+// }
+
+function deleteUser(id) {
+  ul.removeChild(event.target.parentElement);
+  axios
+    .delete(`${crudcrud}/appointmentData/${id}`)
+    .then((res) => console.log(res))
+    .catch((err) => console.error(err));
+}
+
+function editUser(id) {
+  ul.removeChild(event.target.parentElement);
+
+  axios.get(`${crudcrud}/appointmentData/${id}`).then((res) => {
+    username.value = res.data.username;
+    email.value = res.data.email;
+    phone.value = res.data.phone;
+    axios
+      .delete(`${crudcrud}/appointmentData/${id}`)
+      .then((res) => console.log(res))
+      .catch((err) => console.error(err));
+  });
+}
