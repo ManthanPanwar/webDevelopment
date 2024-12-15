@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Inventory Management</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <h2>Inventory Management</h2>
+    <div>
+      <form id="inventoryForm">
+        <label for="itemName">Item Name: </label>
+        <input type="text" name="itemName" id="itemName" required />
+        <br />
+        <br />
+        <label for="description">Description: </label>
+        <input type="text" name="description" id="description" required />
+        <br />
+        <br />
+        <label for="price">Price: </label>
+        <input type="number" name="price" id="price" required />
+        <br />
+        <br />
+        <label for="quantity">Quantity: </label>
+        <input type="number" name="quantity" id="quantity" required />
+        <br />
+        <br />
+        <button type="submit" id="submit-btn">Add Item</button>
+      </form>
+    </div>
+
+    <div>
+      <ul id="itemDetails"></ul>
+    </div>
+  </body>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.0/axios.min.js"></script>
+  <script src="main.js"></script>
+</html>
